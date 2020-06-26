@@ -19,19 +19,19 @@ const privatekey1R =
 const privatekey2R =
   "3b8c47e8ea18d587275dfd6c9040e32b895a791a22111540fb4b25fdeacba01d";
 
-const privatekey1buffer = Buffer.from(privatekey1, "hex");
+const privatekey1buffer = Buffer.from(privatekey1R, "hex");
 const privatekey2buffer = Buffer.from(privatekey2, "hex");
 
-web3.eth.getTransactionCount(account1, (err, txCount) => {
+web3.eth.getTransactionCount(account1R, (err, txCount) => {
   const txObject = {
     nonce: web3.utils.toHex(txCount),
-    to: account2,
-    value: web3.utils.toHex(web3.utils.toWei("3", "ether")),
+    to: account2R,
+    value: web3.utils.toHex(web3.utils.toWei("0.01", "ether")),
     gasLimit: web3.utils.toHex(21000),
     gasPrice: web3.utils.toHex(web3.utils.toWei("10", "gwei")),
   };
 
-  const tx = new Tx.Transaction(txObject);
+  //const tx = new Tx.Transaction(txObject);
   const tx = new Tx.Transaction(txObject, {
     chain: "ropsten",
     hardfork: "petersburg",
@@ -45,3 +45,4 @@ web3.eth.getTransactionCount(account1, (err, txCount) => {
     console.log("txHash:", txHash);
   });
 });
+//0xae88942c63bfb6de50c68c93ec4feb284d532b2b0bf7635f5db16eda2874882f tx hash
